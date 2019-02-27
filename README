@@ -1,0 +1,11 @@
+* start the server
+$ python server.py
+
+* compare multi seesion with one session per request
+$ python test_connection.py
+
+* run multi alone
+$ python multisessions.py
+
+* run one session alone
+$ python onesession.py
