@@ -1,0 +1,11 @@
+server {
+	listen 8000;
+	server_name localhost;
+
+	access_log /var/log/nginx/access_log combined;
+
+	location / {
+		include uwsgi_params;
+		uwsgi_pass unix:/home/haneen/flask_debug/server/server.sock;
+	}
+}
