@@ -1,11 +1,53 @@
-* start the server
-$ python server.py
+# nginx and uwsgi setup
+
+### LIBS:
+$ apt-get install nginx, virtualenv
+
+### Server
+
+$ cd server
+
+$ virtualenv myserverenv
+
+$ source myserverenv/bin/activate
+
+$ (myserverenv) $ pip install uwsgi flask
+
+$ (myserverenv) $ deactivate
+
+### uWSGI setup
+
+$ sudo mv server.service /etc/systemd/system/
+
+$ sudo systemctl start server
+
+$ sudo systemctl enable server
+
+### nginx setup
+
+$ sudo mv myserver /etc/nginx/sites-available/
+
+$ sudo ln -s /etc/nginx/sites-available/myserver /etc/nginx/sites-enabled
+
+# to checkup syntax
+
+$ sudo nginx -t
+
+$ sydi systemctl restart nginx
+
+
+### Client
 
 * compare multi seesion with one session per request
-$ python test_connection.py
+$ python client/test_connection.py
 
 * run multi alone
-$ python multisessions.py
+$ python client/multisessions.py
 
 * run one session alone
-$ python onesession.py
+$ python client/onesession.py
+
+
+# Reference
+
+[1] [link] (https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04)
