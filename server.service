@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI server instance configured to serve myproject
+After=network.target
+
+[Service]
+User=haneen
+Group=www-data
+WorkingDirectory=/home/haneen/flask_debug/server/
+Environment="PATH=/home/haneen/flask_debug/server/serverenv/bin"
+ExecStart=/home/haneen/flask_debug/server/serverenv/bin/uwsgi --ini server.ini
+
+[Install]
+WantedBy=multi-user.target
